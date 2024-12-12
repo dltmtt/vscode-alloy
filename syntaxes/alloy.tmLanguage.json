@@ -109,6 +109,10 @@
                         {
                             "match": "\\b(in)\\b",
                             "name": "keyword.other.in.alloy"
+                        },
+                        {
+                            "match": "\\b(var)\\b",
+                            "name": "keyword.language.var.alloy"
                         }
                     ]
                 },
@@ -138,7 +142,7 @@
                     "repository": {
                         "unary": {
                             "patterns": [{
-                                "match": "!|#|~|\\*|\\^|(\\b(not)\\b)",
+                                "match": "!|#|~|\\*|\\^|(\\b(not|always|eventually|after|historically|once|before)\\b)",
                                 "name": "keyword.operator.unary.alloy"
                             }]
                         },
@@ -148,7 +152,7 @@
                                     "name": "keyword.operator.binary.alloy"
                                 },
                                 {
-                                    "match": "\\b(and|or|iff|implies|else|in)\\b",
+                                    "match": "\\b(and|or|iff|implies|else|in|releases|until|triggered|since)\\b",
                                     "name": "keyword.operator.binary.alloy"
                                 },
                                 {
@@ -162,6 +166,10 @@
                                 {
                                     "match": "\\|",
                                     "name": "keyword.other.split.alloy"
+                                },
+                                {
+                                    "match": ";",
+                                    "name": "keyword.other.semicolon.alloy"
                                 }
                             ]
                         }
@@ -245,7 +253,7 @@
                 },
                 "signature": {
                     "patterns": [{
-                        "begin": "(abstract)?\\s*(lone|some|one)?\\s*(sig)\\b\\s*",
+                        "begin": "(abstract)?\\s*(lone|some|one)?\\s*(var)?\\s*(sig)\\b\\s*",
                         "end": "(?=\\{)",
                         "beginCaptures": {
                             "1": {
@@ -255,6 +263,9 @@
                                 "name": "keyword.modifier.set.alloy"
                             },
                             "3": {
+                                "name": "keyword.language.var.alloy"
+                            },
+                            "4": {
                                 "name": "keyword.language.sig.alloy"
                             }
                         },
@@ -296,6 +307,22 @@
                             {
                                 "match": ",",
                                 "name": "keyword.other.comma.alloy"
+                            },
+                            {
+                                "begin": "(var)\\s*(\\w+)\\s*:",
+                                "beginCaptures": {
+                                    "1": {
+                                        "name": "keyword.language.var.alloy"
+                                    },
+                                    "2": {
+                                        "name": "variable.other.alloy"
+                                    }
+                                },
+                                "end": "(?=\\{|,|\\s)",
+                                "patterns": [{
+                                    "match": "(set|lone|some|one|seq)\\b",
+                                    "name": "keyword.modifier.set.alloy"
+                                }]
                             }
                         ]
                     }]
