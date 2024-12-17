@@ -224,7 +224,7 @@
 					"include": "#module"
 				},
 				{
-					"include": "#predict"
+					"include": "#predicate"
 				},
 				{
 					"include": "#signature"
@@ -252,7 +252,7 @@
 						}
 					]
 				},
-				"predict": {
+				"predicate": {
 					"patterns": [
 						{
 							"match": "(pred)\\b\\s*((?:\\w|'|_|\\d|/)+)",
